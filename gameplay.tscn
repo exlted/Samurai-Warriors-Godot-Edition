@@ -282,13 +282,13 @@ script = ExtResource("2_aeeu0")
 [node name="MapGenerator" type="Node2D" parent="TileMap"]
 script = ExtResource("2_vxdes")
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap"]
+[node name="Player" type="Sprite2D" parent="TileMap"]
 z_index = 6
 position = Vector2(-8, -8)
 texture = ExtResource("4_fgvwb")
 script = ExtResource("3_sjl7w")
 
-[node name="Sprite2D2" type="Sprite2D" parent="TileMap"]
+[node name="Enemy" type="Sprite2D" parent="TileMap"]
 z_index = 6
 position = Vector2(24, -8)
 texture = SubResource("AtlasTexture_b68mh")
