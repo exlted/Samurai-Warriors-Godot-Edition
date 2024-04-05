@@ -8,6 +8,8 @@ public partial class Player : Actor
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!MyTurn) return;
+		
 		var inputDirection = GetInputDirection();
 		if (inputDirection.IsZeroApprox())
 		{
@@ -16,6 +18,8 @@ public partial class Player : Actor
 
 		var targetPosition = Map.RequestMove(this, inputDirection);
 		Move(targetPosition);
+		
+		TurnCompleted();
 	}
 	
 	private static Vector2 GetInputDirection()

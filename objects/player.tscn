@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://braiwibso0b4f" path="res://textures/Hero3.tres" id="1_spd7m"]
 [ext_resource type="Script" path="res://scripts/movement/Player.cs" id="2_re4tl"]
 
-[node name="Player" type="Sprite2D"]
+[node name="Player" type="Sprite2D" groups=["actors"]]
 z_index = 6
 texture_filter = 1
 position = Vector2(-8, -8)

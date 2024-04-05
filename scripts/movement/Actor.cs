@@ -7,11 +7,18 @@ public partial class Actor : Cell
 {
 	[Signal]
 	public delegate void HealthChangedEventHandler(int maxValue, int currentValue);
+
+	[Signal]
+	public delegate void TurnTakenEventHandler(Actor actor);
+
+	[Signal]
+	public delegate void ActorDiedEventHandler(Actor actor);
 	
 	protected Grid Map;
 	protected int Health = 5;
 	protected int MaxHealth = 5;
 	protected int Damage = 1;
+	protected bool MyTurn = false;
 	
 	public Actor() : base(Type.Actor)
 	{
@@ -28,7 +35,7 @@ public partial class Actor : Cell
 	{
 	}
 
-	public virtual void Attack(Actor other)
+	public void Attack(Actor other)
 	{
 		GD.Print("Attacking");
 		other.TakeDamage(Damage);
@@ -38,6 +45,7 @@ public partial class Actor : Cell
 	{
 		GD.Print("Died");
 		Visible = false;
+		EmitSignal(SignalName.ActorDied, this);
 		Dispose();
 	}
 
@@ -53,5 +61,16 @@ public partial class Actor : Cell
 	protected void Move(Vector2 newPosition)
 	{
 		Position = newPosition;
+	}
+
+	public void SetTurn()
+	{
+		MyTurn = true;
+	}
+
+	protected void TurnCompleted()
+	{
+		MyTurn = false;
+		EmitSignal(SignalName.TurnTaken, this);
 	}
 }

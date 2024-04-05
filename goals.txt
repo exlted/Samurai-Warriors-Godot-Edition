@@ -1,7 +1,8 @@
 Samurai Warriors Goals
- - Turn Based Mechanics ()
+ - Turn Based Mechanics (x)
  - Player Movement (x)
- - Enemy Movement ()
+ - Enemy Movement (x)
+    - Enemy AI ()
  - Actor Health (x)
 	- Enemy Health UI (x)
 	- Player Health UI ()

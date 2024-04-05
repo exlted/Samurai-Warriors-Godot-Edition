@@ -1,9 +1,13 @@
 using Godot;
+using SamuraiWarriorGodotEdition.scripts.movement;
 
 namespace SamuraiWarriorGodotEdition.scripts;
 
 public partial class MapGenerator : Node2D
 {
+	[Signal]
+	public delegate void ActorCreatedEventHandler(Actor actor);
+	
 	private int _currentLevel;
 	private TileMap _map;
 	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7eh8exq4wywl"]
+[gd_scene load_steps=9 format=3 uid="uid://c7eh8exq4wywl"]
 
 [ext_resource type="Texture2D" uid="uid://cr651ijwfe2qw" path="res://textures/The Roguelike 1-12-3.png" id="1_127m1"]
 [ext_resource type="Script" path="res://scripts/movement/Grid.cs" id="2_aeeu0"]
 [ext_resource type="Script" path="res://scripts/MapGenerator.cs" id="2_vxdes"]
 [ext_resource type="PackedScene" uid="uid://bispatamwn08f" path="res://objects/enemy.tscn" id="4_4w1ym"]
 [ext_resource type="PackedScene" uid="uid://bfxdwg30octt1" path="res://objects/player.tscn" id="5_1ix0b"]
+[ext_resource type="Script" path="res://scripts/TurnController.cs" id="6_8dgf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ier7j"]
 resource_name = "tiles"
@@ -275,9 +276,6 @@ layer_2/navigation_enabled = false
 layer_2/tile_data = PackedInt32Array(589821, 262144, 18, -196593, 458752, 18)
 script = ExtResource("2_aeeu0")
 
-[node name="MapGenerator" type="Node2D" parent="TileMap"]
-script = ExtResource("2_vxdes")
-
 [node name="Player" parent="TileMap" instance=ExtResource("5_1ix0b")]
 
 [node name="Enemy" parent="TileMap" instance=ExtResource("4_4w1ym")]
@@ -290,3 +288,23 @@ position = Vector2(135.5, 89)
 
 [node name="Enemy4" parent="TileMap" instance=ExtResource("4_4w1ym")]
 position = Vector2(-9, 88)
+
+[node name="MapGenerator" type="Node2D" parent="."]
+position = Vector2(128, 128)
+scale = Vector2(2, 2)
+script = ExtResource("2_vxdes")
+
+[node name="TurnController" type="Node2D" parent="."]
+script = ExtResource("6_8dgf8")
+
+[connection signal="ActorDied" from="TileMap/Player" to="TurnController" method="OnActorDied"]
+[connection signal="TurnTaken" from="TileMap/Player" to="TurnController" method="OnTurnTaken"]
+[connection signal="ActorDied" from="TileMap/Enemy" to="TurnController" method="OnActorDied"]
+[connection signal="TurnTaken" from="TileMap/Enemy" to="TurnController" method="OnTurnTaken"]
+[connection signal="ActorDied" from="TileMap/Enemy2" to="TurnController" method="OnActorDied"]
+[connection signal="TurnTaken" from="TileMap/Enemy2" to="TurnController" method="OnTurnTaken"]
+[connection signal="ActorDied" from="TileMap/Enemy3" to="TurnController" method="OnActorDied"]
+[connection signal="TurnTaken" from="TileMap/Enemy3" to="TurnController" method="OnTurnTaken"]
+[connection signal="ActorDied" from="TileMap/Enemy4" to="TurnController" method="OnActorDied"]
+[connection signal="TurnTaken" from="TileMap/Enemy4" to="TurnController" method="OnTurnTaken"]
+[connection signal="ActorCreated" from="MapGenerator" to="TurnController" method="OnActorCreated"]

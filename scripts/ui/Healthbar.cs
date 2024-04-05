@@ -1,6 +1,4 @@
-using System;
 using Godot;
-using SamuraiWarriorGodotEdition.scripts.movement;
 
 namespace SamuraiWarriorGodotEdition.scripts.ui;
 

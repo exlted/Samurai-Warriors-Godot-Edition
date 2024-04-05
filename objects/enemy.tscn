@@ -8,7 +8,7 @@
 atlas = ExtResource("1_01od5")
 region = Rect2(112, 512, 16, 16)
 
-[node name="Enemy" type="Sprite2D"]
+[node name="Enemy" type="Sprite2D" groups=["actors", "enemies"]]
 z_index = 6
 texture_filter = 1
 texture_repeat = 1
