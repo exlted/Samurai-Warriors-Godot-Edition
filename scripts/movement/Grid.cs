@@ -14,6 +14,17 @@ public partial class Grid : TileMap
 	{
 	}
 
+	public Cell GetPlayer()
+	{
+		foreach (var child in GetChildren())
+		{
+			if (child is not Player cell) continue;
+			return cell;
+		}
+
+		return new Cell(Cell.Type.Empty);
+	}
+	
 	private Cell GetCellState(Vector2I location)
 	{
 		foreach (var child in GetChildren())
