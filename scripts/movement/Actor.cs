@@ -5,6 +5,9 @@ namespace SamuraiWarriorGodotEdition.scripts.movement;
 
 public partial class Actor : Cell
 {
+	[Signal]
+	public delegate void HealthChangedEventHandler(int maxValue, int currentValue);
+	
 	protected Grid Map;
 	protected int Health = 5;
 	protected int MaxHealth = 5;
@@ -25,13 +28,10 @@ public partial class Actor : Cell
 	{
 	}
 
-	public void Attack(Actor other)
+	public virtual void Attack(Actor other)
 	{
 		GD.Print("Attacking");
-		other.Health -= Damage;
-		if (other.Health > 0) return;
-		other.Health = 0;
-		other.Die();
+		other.TakeDamage(Damage);
 	}
 
 	private void Die()
@@ -39,6 +39,15 @@ public partial class Actor : Cell
 		GD.Print("Died");
 		Visible = false;
 		Dispose();
+	}
+
+	private void TakeDamage(int damage)
+	{
+		Health -= damage;
+		EmitSignal(SignalName.HealthChanged, MaxHealth, Health);
+		if (Health > 0) return;
+		Health = 0;
+		Die();
 	}
 	
 	protected void Move(Vector2 newPosition)

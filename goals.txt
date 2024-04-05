@@ -3,7 +3,7 @@ Samurai Warriors Goals
  - Player Movement (x)
  - Enemy Movement ()
  - Actor Health (x)
-	- Enemy Health UI ()
+	- Enemy Health UI (x)
 	- Player Health UI ()
 	- Death (x)
  - Up-stairs & Down-stairs ()

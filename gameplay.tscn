@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7eh8exq4wywl"]
+[gd_scene load_steps=8 format=3 uid="uid://c7eh8exq4wywl"]
 
 [ext_resource type="Texture2D" uid="uid://cr651ijwfe2qw" path="res://textures/The Roguelike 1-12-3.png" id="1_127m1"]
 [ext_resource type="Script" path="res://scripts/movement/Grid.cs" id="2_aeeu0"]
 [ext_resource type="Script" path="res://scripts/MapGenerator.cs" id="2_vxdes"]
-[ext_resource type="Script" path="res://scripts/movement/Player.cs" id="3_sjl7w"]
-[ext_resource type="Texture2D" uid="uid://braiwibso0b4f" path="res://textures/Hero3.tres" id="4_fgvwb"]
-[ext_resource type="Script" path="res://scripts/movement/Enemy.cs" id="6_gyvac"]
+[ext_resource type="PackedScene" uid="uid://bispatamwn08f" path="res://objects/enemy.tscn" id="4_4w1ym"]
+[ext_resource type="PackedScene" uid="uid://bfxdwg30octt1" path="res://objects/player.tscn" id="5_1ix0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ier7j"]
 resource_name = "tiles"
@@ -257,15 +256,12 @@ custom_data_layer_0/name = "Passable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_ier7j")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b68mh"]
-atlas = ExtResource("1_127m1")
-region = Rect2(112, 512, 16, 16)
-
 [node name="Scene" type="Node2D"]
 texture_filter = 1
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(64, 64)
+position = Vector2(128, 128)
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_bg6lb")
 format = 2
 layer_0/name = "base"
@@ -282,14 +278,15 @@ script = ExtResource("2_aeeu0")
 [node name="MapGenerator" type="Node2D" parent="TileMap"]
 script = ExtResource("2_vxdes")
 
-[node name="Player" type="Sprite2D" parent="TileMap"]
-z_index = 6
-position = Vector2(-8, -8)
-texture = ExtResource("4_fgvwb")
-script = ExtResource("3_sjl7w")
+[node name="Player" parent="TileMap" instance=ExtResource("5_1ix0b")]
 
-[node name="Enemy" type="Sprite2D" parent="TileMap"]
-z_index = 6
-position = Vector2(24, -8)
-texture = SubResource("AtlasTexture_b68mh")
-script = ExtResource("6_gyvac")
+[node name="Enemy" parent="TileMap" instance=ExtResource("4_4w1ym")]
+
+[node name="Enemy2" parent="TileMap" instance=ExtResource("4_4w1ym")]
+position = Vector2(39.5, 40.5)
+
+[node name="Enemy3" parent="TileMap" instance=ExtResource("4_4w1ym")]
+position = Vector2(135.5, 89)
+
+[node name="Enemy4" parent="TileMap" instance=ExtResource("4_4w1ym")]
+position = Vector2(-9, 88)

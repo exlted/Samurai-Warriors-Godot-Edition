@@ -22,6 +22,7 @@ public partial class MapGenerator : Node2D
 	public void Generate(int width, int height)
 	{
 		//!TODO: Write the logic for generating a new layout for the TileMap
+		GD.Print("Called Generate");
 	}
 	
 	public void Load(int level)
