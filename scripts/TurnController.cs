@@ -34,7 +34,15 @@ public partial class TurnController : Node
 	
 	public void OnActorDied(Actor actor)
 	{
-		_turnOrder = new Queue<Actor>(_turnOrder.Where(x => x != actor));
+		if (_turnOrder.Peek() == actor)
+		{
+			_turnOrder.Dequeue();
+		}
+		else
+		{
+			_turnOrder = new Queue<Actor>(_turnOrder.Where(x => x != actor));
+		}
+		GD.Print($"Turns in Queue: {_turnOrder.Count}");
 	}
 	
 	public void OnTurnTaken(Actor actor)

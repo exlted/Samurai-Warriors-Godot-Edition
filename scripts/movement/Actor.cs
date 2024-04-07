@@ -18,10 +18,18 @@ public partial class Actor : Cell
 	protected int Health = 5;
 	protected int MaxHealth = 5;
 	protected int Damage = 1;
-	protected bool MyTurn = false;
+	[Export] protected bool MyTurn = false;
 
 	protected Actor() : base(Type.Actor)
 	{
+	}
+
+	~Actor()
+	{
+		if (MyTurn)
+		{
+			TurnCompleted();
+		}
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -37,14 +45,16 @@ public partial class Actor : Cell
 
 	public void Attack(Actor other)
 	{
-		GD.Print("Attacking");
 		other.TakeDamage(Damage);
 	}
 
 	private void Die()
 	{
-		GD.Print("Died");
 		Visible = false;
+		if (MyTurn)
+		{
+			TurnCompleted();
+		}
 		EmitSignal(SignalName.ActorDied, this);
 		Dispose();
 	}
