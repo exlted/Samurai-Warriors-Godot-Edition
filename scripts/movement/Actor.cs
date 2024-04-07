@@ -19,8 +19,8 @@ public partial class Actor : Cell
 	protected int MaxHealth = 5;
 	protected int Damage = 1;
 	protected bool MyTurn = false;
-	
-	public Actor() : base(Type.Actor)
+
+	protected Actor() : base(Type.Actor)
 	{
 	}
 	

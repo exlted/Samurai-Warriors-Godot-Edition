@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dla53o4gt55s1"]
+
+[ext_resource type="Script" path="res://scripts/ui/Healthbar.cs" id="1_4wtdd"]
+
+[node name="Health_Background" type="Line2D"]
+position = Vector2(-6, 7)
+points = PackedVector2Array(0, 0, 12, 0)
+width = 2.0
+default_color = Color(0.2, 0.152941, 0.270588, 1)
+texture_mode = 2
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_4wtdd")
+
+[node name="Health_Foreground" type="Line2D" parent="."]
+texture_filter = 1
+points = PackedVector2Array(0, 0, 12, 0)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

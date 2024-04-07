@@ -4,12 +4,7 @@ namespace SamuraiWarriorGodotEdition.scripts.movement;
 
 public partial class Enemy : Actor
 {
-	private RandomNumberGenerator _rng;
-
-	public Enemy()
-	{
-		_rng = new RandomNumberGenerator();
-	}
+	private RandomNumberGenerator _rng = new();
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -32,19 +27,13 @@ public partial class Enemy : Actor
 
 		return _rng.RandiRange(0, 10) switch
 		{
-			0 => Vector2.Zero // Don't Move
-			,
-			< 3 => // Move closer on the X direction
-				new Vector2(x < 0 ? -1 : 1, 0),
-			< 6 => // Move closer on the Y direction
-				new Vector2(0, y < 0 ? -1 : 1),
-			< 8 => // Move closer on both directions
-				new Vector2(x < 0 ? -1 : 1, y < 0 ? -1 : 1),
-			9 => // Move further away on X direction
-				new Vector2(x < 0 ? 1 : -1, 0),
-			10 => // Move further away on Y direction
-				new Vector2(0, y < 0 ? 1 : -1),
-			_ => new Vector2(x < 0 ? 1 : -1, y < 0 ? 1 : -1)
+			0 =>       Vector2.Zero,                                // Don't Move
+			< 3 => new Vector2(x < 0 ? -1 : 1, 0),              // Move closer on the X direction
+			< 6 => new Vector2(0, y < 0 ? -1 : 1),              // Move closer on the Y direction
+			< 8 => new Vector2(x < 0 ? -1 : 1, y < 0 ? -1 : 1), // Move closer on both directions
+			9 =>   new Vector2(x < 0 ? 1 : -1, 0),              // Move further away on X direction
+			10 =>  new Vector2(0, y < 0 ? 1 : -1),              // Move further away on Y direction
+			_ =>   new Vector2(x < 0 ? 1 : -1, y < 0 ? 1 : -1)  // Default (shouldn't happen)
 		};
 	}
 }

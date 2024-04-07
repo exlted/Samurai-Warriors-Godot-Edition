@@ -1,12 +1,12 @@
 Samurai Warriors Goals
  - Turn Based Mechanics (x)
+	- Fix turns getting "stuck"
  - Player Movement (x)
  - Enemy Movement (x)
     - Enemy AI (x)
-	 - Make it better/more fun ()
  - Actor Health (x)
 	- Enemy Health UI (x)
-	- Player Health UI ()
+	- Player Health UI (x)
 	- Death (x)
  - Up-stairs & Down-stairs ()
  - Random Floor Generation ()

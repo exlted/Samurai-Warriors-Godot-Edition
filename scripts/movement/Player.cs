@@ -4,7 +4,18 @@ namespace SamuraiWarriorGodotEdition.scripts.movement;
 
 public partial class Player : Actor
 {
-
+	public Player()
+	{
+		MaxHealth = 10;
+		Health = 10;
+	}
+	
+	public override void _Ready()
+	{
+		base._Ready();
+		EmitSignal(Actor.SignalName.HealthChanged, MaxHealth, Health);
+	}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

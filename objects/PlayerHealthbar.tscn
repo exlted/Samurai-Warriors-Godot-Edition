@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6lrefwsbvdx6"]
+
+[ext_resource type="Script" path="res://scripts/ui/PlayerHealthbar.cs" id="1_04d8t"]
+[ext_resource type="Texture2D" uid="uid://tbkx7fpufjw0" path="res://textures/HeartFull.tres" id="2_4pnee"]
+[ext_resource type="Texture2D" uid="uid://svfh8g68mfkf" path="res://textures/HeartHalf.tres" id="3_vhg1u"]
+[ext_resource type="Texture2D" uid="uid://dfo41od0xa6dn" path="res://textures/HeartEmpty.tres" id="4_uy0lx"]
+
+[node name="PlayerHealthbar" type="HFlowContainer"]
+offset_right = 339.0
+offset_bottom = 59.0
+script = ExtResource("1_04d8t")
+_full = ExtResource("2_4pnee")
+_half = ExtResource("3_vhg1u")
+_empty = ExtResource("4_uy0lx")

@@ -21,4 +21,4 @@ project/assembly_name="Samurai Warrior Godot Edition"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray()
