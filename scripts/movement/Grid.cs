@@ -73,6 +73,11 @@ public partial class Grid : TileMap
 	
 	public Vector2 RequestMove(Actor actor, Vector2 direction)
 	{
+		if (direction == Vector2.Zero)
+		{
+			return actor.Position;
+		}
+		
 		var mapPosition = LocalToMap(actor.Position);
 		var newPosition = mapPosition + NormalizeDirection(direction);
 		
